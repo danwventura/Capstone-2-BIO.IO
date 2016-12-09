@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Bio.io.DAL;
 using System.Linq;
 using System.Data.Entity;
-
+using Microsoft.AspNet.Identity;
 
 namespace Bio.io.Tests.DAL
 {
@@ -36,6 +36,19 @@ namespace Bio.io.Tests.DAL
             mock_routes = new Mock<DbSet<Route>>();
             mock_images = new Mock<DbSet<Image>>();
             Repo = new BioioRepository(mock_context.Object);
+
+            users = new List<User>
+            {
+                new User {
+                    UserID = 1,
+                    BaseUser = new ApplicationUser {UserName = "dan@theman.com", Email="dan@theman.com" }
+                },
+
+                new User {
+                    UserID = 2,
+                    BaseUser = new ApplicationUser {UserName = "tim@honey.com", Email="tim@honey.com" }
+                }
+            };
 
         }
 
@@ -77,6 +90,54 @@ namespace Bio.io.Tests.DAL
             mock_context.Setup(c => c.DataPoints).Returns(mock_datapoints.Object);
             mock_context.Setup(c => c.Routes).Returns(mock_routes.Object);
             mock_context.Setup(c => c.Images).Returns(mock_images.Object);
+
+            mock_devices.Setup(d => d.Add(It.IsAny<Device>())).Callback((Device d) => devices.Add(d));
+            mock_devices.Setup(d => d.Remove(It.IsAny<Device>())).Callback((Device d) => devices.Remove(d));
+
+            mock_datapoints.Setup(e => e.Add(It.IsAny<DataPoint>())).Callback((DataPoint e) => datapoints.Add(e));
+            mock_datapoints.Setup(e => e.Remove(It.IsAny<DataPoint>())).Callback((DataPoint e) => datapoints.Remove(e));
+
+            mock_routes.Setup(f => f.Add(It.IsAny<Route>())).Callback((Route f) => routes.Add(f));
+            mock_routes.Setup(f => f.Remove(It.IsAny<Route>())).Callback((Route f) => routes.Remove(f));
+
+            mock_images.Setup(d => d.Add(It.IsAny<Image>())).Callback((Image g) => images.Add(g));
+            mock_images.Setup(d => d.Remove(It.IsAny<Image>())).Callback((Image g) => images.Remove(g));
+
+            
+        }
+
+        [TestMethod]
+        public void EnsureCanCreateInstanceOfRepo()
+        {
+            //Arrange
+            BioioRepository repository = new BioioRepository();
+            //Act
+
+            //Assert
+            Assert.IsNotNull(repository);
+        }
+
+        /////////////////////////////////
+        /////////ADDING INSTANCES///////
+        ///////////////////////////////
+
+        [TestMethod]
+        public void EnsureCanAddNewUser()
+        {
+            //DONT NEED TO TEST, REGISTER IS A FEATURE OF BOILERPLATE
+
+            ////Arrange
+            //User first_user = new User { UserID = 1, BaseUser = new ApplicationUser { UserName = "ace@petdetective.com", Email = "ace@petdetective.com" } };
+            //User second_user = new User { UserID = 2, BaseUser = new ApplicationUser { UserName = "alexander@great.com", Email = "alexander@great.com" } };
+            ////Act
+            //Repo.AddNew
+            ////Assert
+        }
+
+        [TestMethod]
+        public void EnsureCanAddNewDevice()
+        {
+
         }
     }
 }
