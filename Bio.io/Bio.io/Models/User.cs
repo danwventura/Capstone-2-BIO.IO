@@ -13,8 +13,8 @@ namespace Bio.io.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public List<Device> Devices { get; set; }
-        public List<Route> Routes { get; set; }
+        public virtual List<Device> Devices { get; set; }
+        public virtual List<Route> Routes { get; set; }
         public DateTime MemberSince { get; set; }
     }
 }
