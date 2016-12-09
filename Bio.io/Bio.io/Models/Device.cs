@@ -12,5 +12,6 @@ namespace Bio.io.Models
         public int DeviceID { get; set; }
         public string Name { get; set; }
         public DateTime LastTransmit { get; set; }
+        //Do I need a UserID here?
     }
 }

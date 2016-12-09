@@ -117,6 +117,10 @@ namespace Bio.io.Tests.DAL
             Assert.IsNotNull(repository);
         }
 
+
+
+
+
         /////////////////////////////////
         /////////ADDING INSTANCES///////
         ///////////////////////////////
@@ -137,7 +141,16 @@ namespace Bio.io.Tests.DAL
         [TestMethod]
         public void EnsureCanAddNewDevice()
         {
-
+            //Arrange
+            Device first_device = new Device {DeviceID = 1, Name="terminator" };
+            Device second_device = new Device {DeviceID = 2, Name="Johnny5" };
+            //Act
+            Repo.AddDevice(first_device);
+            Repo.AddDevice(second_device);
+            int expected_count = 2;
+            int actual_count = Repo.Context.Devices.Count();
+            //Assert
+            Assert.AreEqual(expected_count,actual_count);
         }
     }
 }
