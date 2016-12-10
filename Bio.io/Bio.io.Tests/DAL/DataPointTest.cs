@@ -8,7 +8,7 @@ namespace Bio.io.Tests
     public class DataPointTest
     {
         [TestMethod]
-        public void EnsureCanCreateInstancOfDataPoint()
+        public void EnsureCanCreateInstanceOfDataPoint()
         {
             DataPoint datapoint1 = new DataPoint();
             Assert.IsNotNull(datapoint1);
