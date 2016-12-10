@@ -35,7 +35,6 @@ namespace Bio.io.Tests.DAL
             mock_datapoints = new Mock<DbSet<DataPoint>>();
             mock_routes = new Mock<DbSet<Route>>();
             mock_images = new Mock<DbSet<Image>>();
-            Repo = new BioioRepository(mock_context.Object);
             devices = new List<Device>();
             users = new List<User>
             {
@@ -53,6 +52,7 @@ namespace Bio.io.Tests.DAL
             };
 
             ConnectMocksToDatastore();
+            Repo = new BioioRepository(mock_context.Object);
         }
 
         public void ConnectMocksToDatastore()
@@ -66,33 +66,35 @@ namespace Bio.io.Tests.DAL
             mock_users.As<IQueryable<User>>().Setup(m => m.Provider).Returns(query_users.Provider);
             mock_users.As<IQueryable<User>>().Setup(m => m.Expression).Returns(query_users.Expression);
             mock_users.As<IQueryable<User>>().Setup(m => m.ElementType).Returns(query_users.ElementType);
-            mock_users.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(query_users.GetEnumerator());
+            mock_users.As<IQueryable<User>>().Setup(m => m.GetEnumerator()).Returns(() => query_users.GetEnumerator());
 
             mock_devices.As<IQueryable<Device>>().Setup(m => m.Provider).Returns(query_devices.Provider);
             mock_devices.As<IQueryable<Device>>().Setup(m => m.Expression).Returns(query_devices.Expression);
             mock_devices.As<IQueryable<Device>>().Setup(m => m.ElementType).Returns(query_devices.ElementType);
-            mock_devices.As<IQueryable<Device>>().Setup(m => m.GetEnumerator()).Returns(query_devices.GetEnumerator());
+            mock_devices.As<IQueryable<Device>>().Setup(m => m.GetEnumerator()).Returns(() =>query_devices.GetEnumerator());
 
             //mock_datapoints.As<IQueryable<DataPoint>>().Setup(m => m.Provider).Returns(query_datapoints.Provider);
             //mock_datapoints.As<IQueryable<DataPoint>>().Setup(m => m.Expression).Returns(query_datapoints.Expression);
             //mock_datapoints.As<IQueryable<DataPoint>>().Setup(m => m.ElementType).Returns(query_datapoints.ElementType);
-            //mock_datapoints.As<IQueryable<DataPoint>>().Setup(m => m.GetEnumerator()).Returns(query_datapoints.GetEnumerator());
+            //mock_datapoints.As<IQueryable<DataPoint>>().Setup(m => m.GetEnumerator()).Returns(() =>query_datapoints.GetEnumerator());
 
             //mock_routes.As<IQueryable<Route>>().Setup(m => m.Provider).Returns(query_routes.Provider);
             //mock_routes.As<IQueryable<Route>>().Setup(m => m.Expression).Returns(query_routes.Expression);
             //mock_routes.As<IQueryable<Route>>().Setup(m => m.ElementType).Returns(query_routes.ElementType);
-            //mock_routes.As<IQueryable<Route>>().Setup(m => m.GetEnumerator()).Returns(query_routes.GetEnumerator());
+            //mock_routes.As<IQueryable<Route>>().Setup(m => m.GetEnumerator()).Returns(() =>query_routes.GetEnumerator());
 
             //mock_images.As<IQueryable<Image>>().Setup(m => m.Provider).Returns(query_images.Provider);
             //mock_images.As<IQueryable<Image>>().Setup(m => m.Expression).Returns(query_images.Expression);
             //mock_images.As<IQueryable<Image>>().Setup(m => m.ElementType).Returns(query_images.ElementType);
-            //mock_images.As<IQueryable<Image>>().Setup(m => m.GetEnumerator()).Returns(query_images.GetEnumerator());
+            //mock_images.As<IQueryable<Image>>().Setup(m => m.GetEnumerator()).Returns(() =>query_images.GetEnumerator());
 
             mock_context.Setup(c => c.BioioUsers).Returns(mock_users.Object);
             mock_context.Setup(c => c.Devices).Returns(mock_devices.Object);
             //mock_context.Setup(c => c.DataPoints).Returns(mock_datapoints.Object);
             //mock_context.Setup(c => c.Routes).Returns(mock_routes.Object);
             //mock_context.Setup(c => c.Images).Returns(mock_images.Object);
+            
+
 
             mock_devices.Setup(d => d.Add(It.IsAny<Device>())).Callback((Device d) => devices.Add(d));
             mock_devices.Setup(d => d.Remove(It.IsAny<Device>())).Callback((Device d) => devices.Remove(d));
@@ -126,7 +128,6 @@ namespace Bio.io.Tests.DAL
         {
 
             //Arrange
-            ConnectMocksToDatastore();
             //Act
             List<User> all_users = Repo.GetAllUsers();
             int expected_count = 2;
@@ -140,12 +141,10 @@ namespace Bio.io.Tests.DAL
         public void EnsureCanGetUserById() //Do I need to generate an Add User method so I can test this?
         {
             //Arrange
-            ConnectMocksToDatastore();
-            User user1 = new User {UserID = 3, BaseUser = new ApplicationUser {UserName = "Bob@Steve.com", Email = "Bob@Steve.com" }, Name = "Bob" };
-            User user2 = new User {UserID = 4, BaseUser = new ApplicationUser {UserName = "Steve@Bob.com", Email = "Steve@Bob.com" }, Name = "Steve" };
+            //User user1 = new User {UserID = 3, BaseUser = new ApplicationUser {UserName = "Bob@Steve.com", Email = "Bob@Steve.com" }, Name = "Bob" };
+            //User user2 = new User {UserID = 4, BaseUser = new ApplicationUser {UserName = "Steve@Bob.com", Email = "Steve@Bob.com" }, Name = "Steve" };
             
             //Act
-            List<User> all_users = Repo.GetAllUsers();
             int expected_userID = 1;
             User found_user = Repo.GetUserByID(1);
             int actual_userID = found_user.UserID;

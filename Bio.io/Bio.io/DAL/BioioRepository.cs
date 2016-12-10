@@ -31,11 +31,10 @@ namespace Bio.io.DAL
            return Context.BioioUsers.ToList();
         }
 
-        public User GetUserByID(int userID) //Do I need this?
+        public User GetUserByID(int userID) 
         {
-            BioioRepository repo = new BioioRepository();
-            List<User> all_users = repo.GetAllUsers();
-            User found_user = all_users.FirstOrDefault( u => u.UserID == userID);
+
+            User found_user = Context.BioioUsers.FirstOrDefault(u => u.UserID == userID);
             return found_user;
         }
 
