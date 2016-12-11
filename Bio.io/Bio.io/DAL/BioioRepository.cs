@@ -19,33 +19,65 @@ namespace Bio.io.DAL
             Context = new BioioContext();
         }
 
-
-        //public void AddDevice(Device a_device)
-        //{
-        //    Context.Devices.Add(a_device);
-        //    Context.SaveChanges();
-        //}
-
+        
+        //////////////////////////////////////
+        ////////GET ALL INSTANCES OF TYPE/////
+        /////////////////////////////////////
+       
+        
         public List<User> GetAllUsers()
         {
            return Context.BioioUsers.ToList();
         }
 
-        public User GetUserByID(int userID) 
+        public List<Device> GetAllDevices()
+        {
+            return Context.Devices.ToList();
+        }
+
+        public List<DataPoint> GetAllDataPoints()
+        {
+            return Context.DataPoints.ToList();
+        }
+
+        //////////////////////////////////////
+        ////////ADD NEW INSTANCE OF TYPE/////
+        /////////////////////////////////////
+
+        public void AddDataPoint(DataPoint datapoint)
+        {
+            Context.DataPoints.Add(datapoint);
+            Context.SaveChanges();
+        }
+
+        public void AddDevice(Device device)
+        {
+            Context.Devices.Add(device); //Why is this showing up as null
+            Context.SaveChanges();           
+        }
+
+        public void AddNewRoute(Route route)
+        {
+            Context.Routes.Add(route);
+            Context.SaveChanges();
+        }
+
+        //////////////////////////////////////
+        //////REMOVE INSTANCE OF TYPE/////////
+        /////////////////////////////////////
+
+
+        //////////////////////////////////////
+        //////GET INSTANCE OF TYPE BY ID/////
+        /////////////////////////////////////
+
+        public User GetUserByID(int userID)
         {
 
             User found_user = Context.BioioUsers.FirstOrDefault(u => u.UserID == userID);
             return found_user;
         }
 
-        public void AddDevice(Device device)
-        {
-            int i = 0;
-            Device this_device = device;
-            
-            Context.Devices.Add(device); //Why is this showing up as null
-            Context.SaveChanges();
-            
-        }
+        
     }
 }
