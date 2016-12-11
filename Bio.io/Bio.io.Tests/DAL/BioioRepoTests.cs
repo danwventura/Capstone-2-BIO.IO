@@ -26,6 +26,28 @@ namespace Bio.io.Tests.DAL
         private List<Route> routes { get; set; }
         private List<Image> images { get; set; }
 
+
+        //Device first_device = new Device { DeviceID = 1, Name = "terminator" };
+        //Device second_device = new Device { DeviceID = 2, Name = "Johnny5" };
+
+        //DataPoint datapoint_1 = new DataPoint { DataPointID = 1, Latitude = 1.234567, Longitude = 7.654321 };
+        //DataPoint datapoint_2 = new DataPoint { DataPointID = 2, Latitude = 7.654321, Longitude = 1.234567 };
+        //DataPoint datapoint_3 = new DataPoint { DataPointID = 3, Latitude = 3.456789, Longitude = 9.876543 };
+        //DataPoint datapoint_4 = new DataPoint { DataPointID = 4, Latitude = 9.876543, Longitude = 3.456789 };
+        //List<DataPoint> route1_datapoints = new List<DataPoint> { datapoint_1, datapoint_2 };
+        //List<DataPoint> route2_datapoints = new List<DataPoint> { datapoint_3, datapoint_4 };
+        //Image image_1 = new Image { ImageID = 1, URL = "www.thisthing.com" };
+        //Image image_2 = new Image { ImageID = 2, URL = "www.thatthing.com" };
+        //Image image_3 = new Image { ImageID = 3, URL = "www.mything.com" };
+        //Image image_4 = new Image { ImageID = 4, URL = "www.yourthing.com" };
+        //List<Image> route1_images = new List<Image> { image_1, image_2 };
+        //List<Image> route2_images = new List<Image> { image_3, image_4 };
+
+        //Route route_1 = new Route { RouteID = 1, Coordinates = route1_datapoints, Snapshots = route1_images };
+        //Route route_2 = new Route { RouteID = 2, Coordinates = route2_datapoints, Snapshots = route2_images };
+
+
+
         [TestInitialize]
         public void Initialize()
         {
@@ -253,8 +275,15 @@ namespace Bio.io.Tests.DAL
         public void EnsureCanAddNewImage()
         {
             //Arrange
+            Image image_1 = new Image { ImageID = 1, URL = "www.thisthing.com" };
+            Image image_2 = new Image { ImageID = 2, URL = "www.thatthing.com" };
             //Act
+            Repo.AddNewImage(image_1);
+            Repo.AddNewImage(image_2);
+            int expected_count = 2;
+            int actual_count = Repo.Context.Images.Count();
             //Assert
+            Assert.AreEqual(expected_count, actual_count);
         }
 
         /////////////////////////////////
@@ -265,7 +294,9 @@ namespace Bio.io.Tests.DAL
         public void EnsureCanRemoveDevice()
         {
             //Arrange
+            
             //Act
+           
             //Assert
         }
 
@@ -304,45 +335,86 @@ namespace Bio.io.Tests.DAL
         public void EnsureCanGetUserByID() //Do I need to generate an Add User method so I can test this?
         {
             //Arrange
-            //User user1 = new User {UserID = 3, BaseUser = new ApplicationUser {UserName = "Bob@Steve.com", Email = "Bob@Steve.com" }, Name = "Bob" };
-            //User user2 = new User {UserID = 4, BaseUser = new ApplicationUser {UserName = "Steve@Bob.com", Email = "Steve@Bob.com" }, Name = "Steve" };
-
             //Act
             int expected_userID = 1;
             User found_user = Repo.GetUserByID(1);
             int actual_userID = found_user.UserID;
             //Assert
+            Assert.IsNotNull(found_user);
             Assert.AreEqual(expected_userID, actual_userID);
         }
 
         [TestMethod]
         public void EnsureCanGetDeviceByID()
         {
+
             //Arrange
+            Device first_device = new Device { DeviceID = 1, Name = "terminator" };
+            Device second_device = new Device { DeviceID = 2, Name = "Johnny5" };
             //Act
+            Repo.AddDevice(first_device);
+            Repo.AddDevice(second_device);
+            int expected_id = 1;
+            Device found_device = Repo.GetDeviceByID(1);
+            int actual_id = found_device.DeviceID;
             //Assert
+            Assert.IsNotNull(found_device);
+            Assert.AreEqual(expected_id, actual_id);
         }
 
         [TestMethod]
         public void EnsureCanGetDataPointByID()
-        {
+        {   
             //Arrange
+            DataPoint datapoint_1 = new DataPoint { DataPointID = 1, Latitude = 1.234567, Longitude = 7.654321 };
+            DataPoint datapoint_2 = new DataPoint { DataPointID = 2, Latitude = 7.654321, Longitude = 1.234567 };
             //Act
+            Repo.AddDataPoint(datapoint_1);
+            Repo.AddDataPoint(datapoint_2);
+            int expected_id = 1;
+            DataPoint found_datapoint = Repo.GetDataPointByID(1);
+            int actual_id = found_datapoint.DataPointID;
             //Assert
+            Assert.IsNotNull(found_datapoint);
+            Assert.AreEqual(expected_id, actual_id);
         }
 
         [TestMethod]
         public void EnsureCanGetRouteByID()
         {
             //Arrange
+            DataPoint datapoint_1 = new DataPoint { DataPointID = 1, Latitude = 1.234567, Longitude = 7.654321 };
+            DataPoint datapoint_2 = new DataPoint { DataPointID = 2, Latitude = 7.654321, Longitude = 1.234567 };
+            DataPoint datapoint_3 = new DataPoint { DataPointID = 3, Latitude = 3.456789, Longitude = 9.876543 };
+            DataPoint datapoint_4 = new DataPoint { DataPointID = 4, Latitude = 9.876543, Longitude = 3.456789 };
+            List<DataPoint> route1_datapoints = new List<DataPoint> { datapoint_1, datapoint_2 };
+            List<DataPoint> route2_datapoints = new List<DataPoint> { datapoint_3, datapoint_4 };
+            Image image_1 = new Image { ImageID = 1, URL = "www.thisthing.com" };
+            Image image_2 = new Image { ImageID = 2, URL = "www.thatthing.com" };
+            Image image_3 = new Image { ImageID = 3, URL = "www.mything.com" };
+            Image image_4 = new Image { ImageID = 4, URL = "www.yourthing.com" };
+            List<Image> route1_images = new List<Image> { image_1, image_2 };
+            List<Image> route2_images = new List<Image> { image_3, image_4 };
+
+            Route route_1 = new Route { RouteID = 1, Coordinates = route1_datapoints, Snapshots = route1_images };
+            Route route_2 = new Route { RouteID = 2, Coordinates = route2_datapoints, Snapshots = route2_images };
             //Act
+            Repo.AddNewRoute(route_1);
+            Repo.AddNewRoute(route_2);
+            int expected_id = 2;
+            Route found_route = Repo.GetRouteByID(2);
+            int actual_id = found_route.RouteID;
             //Assert
+            Assert.IsNotNull(found_route);
+            Assert.AreEqual(expected_id, actual_id);
         }
 
         [TestMethod]
         public void EnsureCanGetImageByID()
         {
-
+            //Arrange
+            //Act
+            //Assert
         }
     }
 }

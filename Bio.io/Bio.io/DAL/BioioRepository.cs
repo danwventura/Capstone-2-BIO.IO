@@ -62,6 +62,12 @@ namespace Bio.io.DAL
             Context.SaveChanges();
         }
 
+        public void AddNewImage(Image image)
+        {
+            Context.Images.Add(image);
+            Context.SaveChanges();
+        }
+
         //////////////////////////////////////
         //////REMOVE INSTANCE OF TYPE/////////
         /////////////////////////////////////
@@ -78,6 +84,22 @@ namespace Bio.io.DAL
             return found_user;
         }
 
-        
+        public Device GetDeviceByID(int deviceID)
+        {
+            Device found_device = Context.Devices.FirstOrDefault(d => d.DeviceID == deviceID);
+            return found_device;
+        }
+
+        public DataPoint GetDataPointByID(int datapointID)
+        {
+            DataPoint found_datapoint = Context.DataPoints.FirstOrDefault(p => p.DataPointID == datapointID);
+            return found_datapoint;
+        }
+
+        public Route GetRouteByID(int routeID)
+        {
+            Route found_route = Context.Routes.FirstOrDefault(r => r.RouteID == routeID);
+            return found_route;
+        }
     }
 }
