@@ -40,6 +40,16 @@ namespace Bio.io.DAL
             return Context.DataPoints.ToList();
         }
 
+        public List<Route> GetAllRoutes()
+        {
+            return Context.Routes.ToList();
+        }
+
+        public List<Image> GetAllImages()
+        {
+            return Context.Images.ToList();
+        }
+
         //////////////////////////////////////
         ////////ADD NEW INSTANCE OF TYPE/////
         /////////////////////////////////////
@@ -101,5 +111,13 @@ namespace Bio.io.DAL
             Route found_route = Context.Routes.FirstOrDefault(r => r.RouteID == routeID);
             return found_route;
         }
+
+        public Image GetImageByID(int imageID)
+        {
+            Image found_image = Context.Images.FirstOrDefault(i => i.ImageID == imageID);
+            return found_image;
+        }
+
+        
     }
 }

@@ -197,13 +197,50 @@ namespace Bio.io.Tests.DAL
         [TestMethod]
         public void EnsureCanGetAllRoutes()
         {
+            //Arrange
+            DataPoint datapoint_1 = new DataPoint { DataPointID = 1, Latitude = 1.234567, Longitude = 7.654321 };
+            DataPoint datapoint_2 = new DataPoint { DataPointID = 2, Latitude = 7.654321, Longitude = 1.234567 };
+            DataPoint datapoint_3 = new DataPoint { DataPointID = 3, Latitude = 3.456789, Longitude = 9.876543 };
+            DataPoint datapoint_4 = new DataPoint { DataPointID = 4, Latitude = 9.876543, Longitude = 3.456789 };
+            List<DataPoint> route1_datapoints = new List<DataPoint> { datapoint_1, datapoint_2 };
+            List<DataPoint> route2_datapoints = new List<DataPoint> { datapoint_3, datapoint_4 };
+            Image image_1 = new Image { ImageID = 1, URL = "www.thisthing.com" };
+            Image image_2 = new Image { ImageID = 2, URL = "www.thatthing.com" };
+            Image image_3 = new Image { ImageID = 3, URL = "www.mything.com" };
+            Image image_4 = new Image { ImageID = 4, URL = "www.yourthing.com" };
+            List<Image> route1_images = new List<Image> { image_1, image_2 };
+            List<Image> route2_images = new List<Image> { image_3, image_4 };
 
+            Route route_1 = new Route { RouteID = 1, Coordinates = route1_datapoints, Snapshots = route1_images };
+            Route route_2 = new Route { RouteID = 2, Coordinates = route2_datapoints, Snapshots = route2_images };
+
+            //Act
+            Repo.AddNewRoute(route_1);
+            Repo.AddNewRoute(route_2);
+            int expected_count = 2;
+            int actual_count = Repo.GetAllRoutes().Count();
+
+            //Assert
+            Assert.AreEqual(expected_count, actual_count);
         }
 
         [TestMethod]
         public void EnsureCanGetAllImages()
         {
+            //Arrange
+            Image image_1 = new Image { ImageID = 1, URL = "www.thisthing.com" };
+            Image image_2 = new Image { ImageID = 2, URL = "www.thatthing.com" };
+            Image image_3 = new Image { ImageID = 3, URL = "www.mything.com" };
 
+            //Act
+            Repo.AddNewImage(image_1);
+            Repo.AddNewImage(image_2);
+            Repo.AddNewImage(image_3);
+            int expected_count = 3;
+            int actual_count = Repo.GetAllImages().Count();
+
+            //Assert
+            Assert.AreEqual(expected_count, actual_count);
         }
         
         /////////////////////////////////
@@ -413,8 +450,17 @@ namespace Bio.io.Tests.DAL
         public void EnsureCanGetImageByID()
         {
             //Arrange
+            Image image_1 = new Image { ImageID = 23, URL = "www.thisthing.com" };
+            Image image_2 = new Image { ImageID = 46, URL = "www.thatthing.com" };
             //Act
+            Repo.AddNewImage(image_1);
+            Repo.AddNewImage(image_2);
+            int expected_id = 46;
+            Image found_image = Repo.GetImageByID(46);
+            int actual_id = found_image.ImageID;
             //Assert
+            Assert.IsNotNull(found_image);
+            Assert.AreEqual(expected_id, actual_id);
         }
     }
 }
