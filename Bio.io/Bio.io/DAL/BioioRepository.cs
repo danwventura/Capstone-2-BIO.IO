@@ -83,6 +83,34 @@ namespace Bio.io.DAL
         /////////////////////////////////////
 
 
+        public void RemoveDevice(int deviceID)
+        {
+            Device found_device = GetDeviceByID(deviceID); //getting null here
+            Context.Devices.Remove(found_device);
+            Context.SaveChanges();
+        }
+
+        public void RemoveDataPoint(int datapointID)
+        {
+            DataPoint found_datapoint = GetDataPointByID(datapointID);
+            Context.DataPoints.Remove(found_datapoint);
+            Context.SaveChanges();
+        }
+
+        public void RemoveRoute(int routeID)
+        {
+            Route found_route = GetRouteByID(routeID);
+            Context.Routes.Remove(found_route);
+            Context.SaveChanges();
+        }
+
+        public void RemoveImage(int imageID)
+        {
+            Image found_image = GetImageByID(imageID);
+            Context.Images.Remove(found_image);
+            Context.SaveChanges();
+        }
+
         //////////////////////////////////////
         //////GET INSTANCE OF TYPE BY ID/////
         /////////////////////////////////////
@@ -96,7 +124,7 @@ namespace Bio.io.DAL
 
         public Device GetDeviceByID(int deviceID)
         {
-            Device found_device = Context.Devices.FirstOrDefault(d => d.DeviceID == deviceID);
+            Device found_device = Context.Devices.FirstOrDefault(d => d.DeviceID == deviceID); //getting null here
             return found_device;
         }
 

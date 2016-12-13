@@ -6,6 +6,9 @@ using System.Web;
 
 namespace Bio.io.Models
 {
+
+    //use s3 --> amazon bucket 
+
     public class Image
     {
         [Key]

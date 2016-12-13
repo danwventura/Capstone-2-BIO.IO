@@ -10,7 +10,6 @@ namespace Bio.io.Models
     {   [Key]
         public int RouteID { get; set; }
         public virtual List<DataPoint> Coordinates { get; set; }
-        public virtual List<Image> Snapshots { get; set; }
         public DateTime Created { get; set; }
     }
 }
