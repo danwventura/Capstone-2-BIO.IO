@@ -1,4 +1,4 @@
-﻿app.controller("RouteCtrl", function ($scope, $http) {
+﻿app.controller("AllRoutesCtrl", function ($scope, $http) {
 
     
 
