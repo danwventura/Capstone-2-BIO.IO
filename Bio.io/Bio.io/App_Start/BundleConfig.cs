@@ -30,6 +30,7 @@ namespace Bio.io
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/materialize/css/materialize.css",
                       "~/Content/site.css"));
         }
     }

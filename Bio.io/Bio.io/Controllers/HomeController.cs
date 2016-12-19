@@ -8,7 +8,7 @@ namespace Bio.io.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Active()
         {
             return View();
         }
