@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Active Devices";
+}
+
+@{ 
+    if (User.Identity.IsAuthenticated) {
+
+        <h1>HELLO, LOGGED IN USER</h1>
+
+    }
+
+    else
+    {
+
+        <div class="jumbotron">
+            <div class="row">
+                <div>
+                    <p class="col s4"><a href="Account/Login" class="btn-btn-primary btn-large">LOGIN &raquo</a></p>
+                </div>
+                <div>
+                    <p class="col s4"><a href="Account/Register" class="btn-btn-primary btn-large">REGISTER &raquo</a></p>
+                </div>
+            </div>
+        </div>
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+

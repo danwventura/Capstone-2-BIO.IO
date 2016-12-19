@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Ernie's First Route";
+}
+<h2>@ViewBag.Title</h2>
+<h3>@ViewBag.Message</h3>
+
+
+
+
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+
+
+
+<div ng-controller="RouteCtrl">
+    
+    <div>
+        <h1><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Taking out the Trash</h1>
+    </div>
+    <div id="map" ></div>
+    <button ng-click="makeCoordinateArrays()">Show Markers</button>
+    <div ng-repeat="location in coordinates" style="margin-top:50px">
+        <h3>Coordinate</h3>
+        <p>{{location}}</p>
+    </div>
+</div>
