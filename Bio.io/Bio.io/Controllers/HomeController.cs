@@ -13,7 +13,7 @@ namespace Bio.io.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult AllRoutes()
         {
             ViewBag.Message = "Your application description page.";
 
