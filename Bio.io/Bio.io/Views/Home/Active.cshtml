@@ -2,15 +2,18 @@
     ViewBag.Title = "Active Devices";
 }
 
-@{ 
-    if (User.Identity.IsAuthenticated) {
+
+<div ng-controller="ActiveDevicesCtrl">
+  <h1>{{message}}</h1>      
+@{
+    if (User.Identity.IsAuthenticated)
+    {
 
         <h1>HELLO, LOGGED IN USER</h1>
+        }
 
-    }
-
-    else
-    {
+        else
+        {
 
         <div class="jumbotron">
             <div class="row">
@@ -22,10 +25,10 @@
                 </div>
             </div>
         </div>
+        }
 
-    }
-
-}
+        }
+</div>
 
 
 
