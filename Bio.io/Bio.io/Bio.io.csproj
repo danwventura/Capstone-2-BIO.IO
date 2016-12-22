@@ -193,6 +193,22 @@
     <Compile Include="Migrations\201612130009487_ImagesAsDataPoint.Designer.cs">
       <DependentUpon>201612130009487_ImagesAsDataPoint.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612220433541_AddedRegisteredDateTime.cs" />
+    <Compile Include="Migrations\201612220433541_AddedRegisteredDateTime.Designer.cs">
+      <DependentUpon>201612220433541_AddedRegisteredDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612220454568_RemovedMemberSince.cs" />
+    <Compile Include="Migrations\201612220454568_RemovedMemberSince.Designer.cs">
+      <DependentUpon>201612220454568_RemovedMemberSince.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612220602292_MovedNameToAppUser.cs" />
+    <Compile Include="Migrations\201612220602292_MovedNameToAppUser.Designer.cs">
+      <DependentUpon>201612220602292_MovedNameToAppUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612220606027_RemovedNameFromUserModel.cs" />
+    <Compile Include="Migrations\201612220606027_RemovedNameFromUserModel.Designer.cs">
+      <DependentUpon>201612220606027_RemovedNameFromUserModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataPoint.cs" />
@@ -335,6 +351,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612130009487_ImagesAsDataPoint.resx">
       <DependentUpon>201612130009487_ImagesAsDataPoint.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612220433541_AddedRegisteredDateTime.resx">
+      <DependentUpon>201612220433541_AddedRegisteredDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612220454568_RemovedMemberSince.resx">
+      <DependentUpon>201612220454568_RemovedMemberSince.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612220602292_MovedNameToAppUser.resx">
+      <DependentUpon>201612220602292_MovedNameToAppUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612220606027_RemovedNameFromUserModel.resx">
+      <DependentUpon>201612220606027_RemovedNameFromUserModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

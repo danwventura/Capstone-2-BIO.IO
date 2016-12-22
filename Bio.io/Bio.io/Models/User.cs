@@ -10,11 +10,14 @@ namespace Bio.io.Models
     {
         [Key]
         public int UserID { get; set; }
-        public string Name { get; set; }
         public ApplicationUser BaseUser { get; set; }
-        public string Password { get; set; }
         public virtual List<Device> Devices { get; set; }
         public virtual List<Route> Routes { get; set; }
-        public DateTime MemberSince { get; set; }
+
+        //public void Test()
+        //{
+        //    BaseUser.
+
+        //}
     }
 }
