@@ -26,11 +26,11 @@ namespace Bio.io
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.js",
                       "~/Scripts/app.js",
-                      "~/Scripts/ActiveDevicesCtrl.js",
-                      "~/Scripts/AllRoutesCtrl.js",
-                      "~/Scripts/RouteDetailsCtrl.js",
-                      "~/Scripts/PicturesCtrl.js",
-                      "~/Scripts/AccountCtrl.js"));
+                      "~/Scripts/Controllers/ActiveDevicesCtrl.js",
+                      "~/Scripts/Controllers/AllRoutesCtrl.js",
+                      "~/Scripts/Controllers/RouteDetailsCtrl.js",
+                      "~/Scripts/Controllers/PicturesCtrl.js",
+                      "~/Scripts/Controllers/UserDetailsCtrl.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

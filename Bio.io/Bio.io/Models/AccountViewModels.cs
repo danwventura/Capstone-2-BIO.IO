@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace Bio.io.Models
 {
     public class ExternalLoginConfirmationViewModel
@@ -65,6 +66,11 @@ namespace Bio.io.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name ="Name")]
+        [StringLength(20, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        public string Name { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -79,6 +85,9 @@ namespace Bio.io.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [DataType(DataType.DateTime)]
+        public System.DateTime Registered { get; set; }
     }
 
     public class ResetPasswordViewModel

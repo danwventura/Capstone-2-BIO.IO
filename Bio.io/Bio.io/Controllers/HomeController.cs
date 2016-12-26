@@ -15,13 +15,6 @@ namespace Bio.io.Controllers
             return View();
         }
 
-        public ActionResult AllRoutes() //If I have a seperate View for this should I just include this in the .cs controller?
-        {
-            ViewBag.Message = "Your all routes page.";
-
-            return View();
-        }
-
         public ActionResult RouteDetails()
         {
             ViewBag.Message = "Your route details page.";
