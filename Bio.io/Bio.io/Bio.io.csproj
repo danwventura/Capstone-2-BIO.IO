@@ -178,8 +178,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ActiveController.cs" />
+    <Compile Include="Controllers\PicturesController.cs" />
+    <Compile Include="Controllers\RoutesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DAL\BioioContext.cs" />
     <Compile Include="DAL\BioioRepository.cs" />
     <Compile Include="Global.asax.cs">
@@ -232,9 +236,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\AccountCtrl.js" />
-    <Content Include="Scripts\ActiveDevicesCtrl.js" />
-    <Content Include="Scripts\AllRoutesCtrl.js" />
+    <Content Include="Scripts\Controllers\AccountCtrl.js" />
+    <Content Include="Scripts\Controllers\ActiveDevicesCtrl.js" />
+    <Content Include="Scripts\Controllers\AllRoutesCtrl.js" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
@@ -288,18 +292,18 @@
     <Content Include="Content\materialize\font\roboto\Roboto-Thin.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\Controllers\UserDetailsCtrl.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\PicturesCtrl.js" />
+    <Content Include="Scripts\Controllers\PicturesCtrl.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\RouteDetailsCtrl.js" />
+    <Content Include="Scripts\Controllers\RouteDetailsCtrl.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Home\Active.cshtml" />
-    <Content Include="Views\Home\AllRoutes.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -334,6 +338,10 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Routes\All.cshtml" />
+    <Content Include="Views\Active\Index.cshtml" />
+    <Content Include="Views\Pictures\Gallery.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

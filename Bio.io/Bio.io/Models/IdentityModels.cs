@@ -32,5 +32,7 @@ namespace Bio.io.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Bio.io.Models.Route> Routes { get; set; }
     }
 }
