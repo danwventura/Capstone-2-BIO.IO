@@ -27,6 +27,8 @@
     };
 
 
+
+
     $scope.map = new google.maps.Map(document.getElementById('map'), $scope.mapOptions)
 
     $scope.homeMarker = new google.maps.Marker({
@@ -35,6 +37,9 @@
         label: "Home",
         icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
     })
+
+
+
 
     $scope.vanMarker = new google.maps.Marker({
         map: $scope.map,
@@ -56,9 +61,6 @@
 
        
 
-        
-        
-
     }
 
     $scope.parseCoordinateArrays = function () {
@@ -69,7 +71,6 @@
         }
         $scope.makeMarkers();
     }
-
 
 
 

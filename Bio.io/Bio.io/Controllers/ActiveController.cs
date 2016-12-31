@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace Bio.io.Controllers
 {
@@ -17,13 +18,11 @@ namespace Bio.io.Controllers
         }
 
         // GET: Active/Details/5
-        public void AddDatapoint(Object datapoint)
+        public void AddDatapoint(string datapoint)
         {
-            //DataPoint new_datapoint = new DataPoint();
-            //new_datapoint.Coords = datapoint
-
-            //BioioRepository repo = new BioioRepository();
-            //repo.AddDataPoint();
+            DataPoint new_datapoint = (new JavaScriptSerializer()).Deserialize<DataPoint>(datapoint);
+            BioioRepository repo = new BioioRepository();
+            repo.AddDataPoint(new_datapoint);
         }
 
         // GET: Active/Create

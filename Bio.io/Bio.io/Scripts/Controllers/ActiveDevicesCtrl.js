@@ -10,6 +10,8 @@
     $scope.coordinate_arrays = [];
     $scope.googleLats = [];
     $scope.googleLongs = [];
+    $scope.datapoint_array = [];
+
 
     $scope.stopLog = function() {
         
@@ -29,7 +31,7 @@
             console.log(response);
             $scope.createMap();
             $scope.createCoordsArray(response.data.feeds);
-            $scope.addDatapoints(response.data.feeds);
+            $scope.createDatapointArray(response.data.feeds);
         })
                 
         //}, 20000)
@@ -132,52 +134,43 @@
         
     }
 
+    $scope.datapoint = function (channel_id, created_at, lat_pos, long_pos) {
+        this.ChannelId = channel_id;
+        this.Created = created_at;
+        this.Lat = lat_pos;
+        this.Long = long_pos;
+    }
+
+
 
     $scope.createDatapointArray = function (responseFeed) {
         console.log("googLats", $scope.googleLats);
         console.log("googLongs", $scope.googleLongs);
         
-        var datapoint_array = [];
-        var datapoint = {};
-
+        var datapoint = $scope.datapoint;
+        var datapoint_array = $scope.datapoint_array;
+        var currChannelId = $scope.currChannelId
         var lats = $scope.googleLats;
         var longs = $scope.googleLongs;
 
         for (var i = 0; i < responseFeed.length; i++) {
-
-            datapoint_array[i] = new datapoint ({
-                channelId: $scope.currChannelId,
-                created: responseFeed[i].created_at,
-                lat: lats[i],
-                long: long[i],
-
-            })
-
-
+            datapoint_array[i] = JSON.stringify(new datapoint(currChannelId, responseFeed[i].created_at, lats[i], longs[i]));
         }
-
-
-
-
-        //for (var i = 0; i < lats.length; i++) {
-            
-        //    datapointsArray[i] =  new datapoint ({
-        //        channelID: $scope.currChannelId,
-        //        created: 
-        //    })
-        //}
-
-
-        
-        
-        //console.log("responseHERE", responseFeed);
-        //console.log(responseFeed[0].created_at);
-        //var datapoint_array = [];
-        //var datapoint;
-
-        
+        console.log(datapoint_array);
+        $scope.addNewDatapoints(datapoint_array);
     }
     
+
+
+
+    $scope.addNewDatapoints = function (datapoint_array) {
+
+        for (var i = 0; i < datapoint_array.length; i++) {
+            $http.post({ url: "http://localhost:51089/Active/AddDatapoint", data: datapoint_array[i] })
+        }
+
+    }
+
 
 
 

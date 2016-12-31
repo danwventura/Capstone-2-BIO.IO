@@ -15,5 +15,6 @@ namespace Bio.io.Models
         public virtual Image Snapshot { get; set; }
         public Device TransmittedBy { get; set; }
         public DateTime Created { get; set; }
+        public string ChannelId { get; set; }
     }
 }
