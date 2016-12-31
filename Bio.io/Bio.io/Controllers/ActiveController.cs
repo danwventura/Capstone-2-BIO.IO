@@ -17,10 +17,13 @@ namespace Bio.io.Controllers
         }
 
         // GET: Active/Details/5
-        public void AddDatapoint(DataPoint datapoint)
+        public void AddDatapoint(Object datapoint)
         {
-            BioioRepository repo = new BioioRepository();
-            repo.AddDataPoint(datapoint);
+            //DataPoint new_datapoint = new DataPoint();
+            //new_datapoint.Coords = datapoint
+
+            //BioioRepository repo = new BioioRepository();
+            //repo.AddDataPoint();
         }
 
         // GET: Active/Create

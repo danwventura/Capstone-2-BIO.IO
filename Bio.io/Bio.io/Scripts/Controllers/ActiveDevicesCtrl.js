@@ -21,22 +21,24 @@
         continueLog = true;
         console.log("startLog");
         //while(continueLog = true){
-            //setTimeout(function () {
-                $http({
-                    method: 'GET',
-                    url: "https://api.thingspeak.com/channels/"+ $scope.currChannelId +"/feed.json"
-                }).then(function (response) {
-                    console.log(response);
-                    $scope.createMap();
-                    $scope.createCoordsArray(response.data.feeds);
-                    //$scope.addDatapoints(response);
-                })
+        //setTimeout(function () {
+        $http({
+            method: 'GET',
+            url: "https://api.thingspeak.com/channels/"+ $scope.currChannelId +"/feed.json"
+        }).then(function (response) {
+            console.log(response);
+            $scope.createMap();
+            $scope.createCoordsArray(response.data.feeds);
+            $scope.addDatapoints(response.data.feeds);
+        })
                 
-            //}, 20000)
+        //}, 20000)
 
             
         //}
     }
+
+
 
     $scope.createMap = function () {
         console.log("createMap");
@@ -52,10 +54,10 @@
 
 
 
-    $scope.createCoordsArray = function (response) {
+    $scope.createCoordsArray = function (responseFeed) {
         console.log("createCoordsArray");
-        for (var i = 0; i < response.length; i++) {
-            $scope.responseCoords.push(response[i].field1);
+        for (var i = 0; i < responseFeed.length; i++) {
+            $scope.responseCoords.push(responseFeed[i].field1);
         }
         console.log("responseCoords",$scope.responseCoords);
         $scope.makeCleanCoordinateArrays();
@@ -127,10 +129,47 @@
             strokeWeight: 2
         })
         path.setMap($scope.map);
+        
     }
 
 
+    $scope.createDatapointArray = function (responseFeed) {
+        console.log("googLats", $scope.googleLats);
+        console.log("googLongs", $scope.googleLongs);
+        
+        var datapointsArray = [];
+        var datapoint = {}
 
+        var lats = $scope.googleLats;
+        var longs = $scope.googleLongs;
+
+        //for (var i = 0; i < lats.length; i++) {
+            
+        //    datapointsArray[i] =  new datapoint ({
+        //        channelID: $scope.currChannelId,
+        //        created: 
+        //    })
+        //}
+
+
+        
+        
+        //console.log("responseHERE", responseFeed);
+        //console.log(responseFeed[0].created_at);
+        //var datapoint_array = [];
+        //var datapoint;
+
+        //for (var i = 0; i < responseFeed.length; i++) {
+
+        //    datapoint_array[i] = new datapoint{
+        //        channelId: $scope.currChannelId,
+        //        created: responseFeed[i].created_at,
+        //        coords:
+        //    }
+
+
+        }
+    //}
     
 
 

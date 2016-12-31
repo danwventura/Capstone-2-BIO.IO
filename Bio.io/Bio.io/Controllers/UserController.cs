@@ -23,21 +23,21 @@ namespace Bio.io.Controllers
             //BioioRepository Repo = new BioioRepository();
             //return Repo.GetUserByID(UserID);
             
-            var claimsIdentity = User.Identity as ClaimsIdentity;
-            if (claimsIdentity != null) {
+            //var claimsIdentity = User.Identity as ClaimsIdentity;
+            //if (claimsIdentity != null) {
 
-                var userIdClaim = claimsIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+            //    var userIdClaim = claimsIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
  
-                if (userIdClaim != null)
-                {
+            //    if (userIdClaim != null)
+            //    {
                     BioioRepository repo = new BioioRepository();
-                    
-                    string userIdValue = userIdClaim.Value;
-                    User this_user = repo.GetUserByID(userIdValue);
+                    string userUserName = User.Identity.Name;
+                    //string userIdValue = userIdClaim.Value;
+                    User this_user = repo.GetUserFromUserName(userUserName);
                     return this_user;
-                }
-           }
-                return null;
+           //     }
+           //}
+           //     return null;
         }
 
         //public User GetUserByID(int userID)

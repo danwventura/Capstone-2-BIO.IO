@@ -10,9 +10,9 @@
         $http({
                method: 'GET',
                url: 'http://localhost:51089/User/GetCurrentUser'
-             }).then(function (response) {
+             }).then(function(response) {
             
-                 console.log("response", response.data);
+                 console.log("this_response", response);
                  
                  $scope.user = response.data;
                  //$scope.createScopedUserData(this_user);

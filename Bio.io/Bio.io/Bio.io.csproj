@@ -221,6 +221,10 @@
     <Compile Include="Migrations\201612310415549_LatLongToCoords.Designer.cs">
       <DependentUpon>201612310415549_LatLongToCoords.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612311521220_BackToLatLong.cs" />
+    <Compile Include="Migrations\201612311521220_BackToLatLong.Designer.cs">
+      <DependentUpon>201612311521220_BackToLatLong.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DataPoint.cs" />
@@ -382,6 +386,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612310415549_LatLongToCoords.resx">
       <DependentUpon>201612310415549_LatLongToCoords.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612311521220_BackToLatLong.resx">
+      <DependentUpon>201612311521220_BackToLatLong.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

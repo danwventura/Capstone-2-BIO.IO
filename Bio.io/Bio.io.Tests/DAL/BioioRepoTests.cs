@@ -451,7 +451,7 @@ namespace Bio.io.Tests.DAL
             ConnectMocksToDatastore();
             //Act
             int expected_userID = 1;
-            User found_user = Repo.GetUserByID("1");
+            User found_user = Repo.GetUserFromUsername("1");
             int actual_userID = found_user.UserID;
             //Assert
             Assert.IsNotNull(found_user);
