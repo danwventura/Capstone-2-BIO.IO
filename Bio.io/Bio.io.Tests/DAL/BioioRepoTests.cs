@@ -61,13 +61,13 @@ namespace Bio.io.Tests.DAL
             {
                 new User {
                     UserID = 1,
-                    BaseUser = new ApplicationUser {UserName = "dan@theman.com", Email="dan@theman.com" },
-                    Name = "Dan"
+                    BaseUser = new ApplicationUser {Id= "1", UserName = "dan@theman.com", Email="dan@theman.com" },
+                    
                 },
                 new User {
-                    UserID = 2,
-                    BaseUser = new ApplicationUser {UserName = "tim@honey.com", Email="tim@honey.com" },
-                    Name = "Tim"
+                    UserID = 1,
+                    BaseUser = new ApplicationUser {Id = "2", UserName = "tim@honey.com", Email="tim@honey.com" },
+                    
                 }
             };
             devices = new List<Device>();
@@ -243,12 +243,28 @@ namespace Bio.io.Tests.DAL
             //Assert
             Assert.AreEqual(expected_count, actual_count);
         }
-        
+
         /////////////////////////////////
         /////////ADDING INSTANCES///////
         ///////////////////////////////
 
 
+        [TestMethod]
+        public void EnsureCanAddNewUser()
+        {
+            //Arrange
+            User test_1 = new User {UserID = 10, BaseUser = new ApplicationUser { Id = "10", UserName = "dan@van.com", Email = "dan@van.com" } };
+            User test_2 = new User { UserID = 12, BaseUser = new ApplicationUser { Id = "12", UserName = "zach@moneysack.com", Email = "zach@moneysack.com" } };
+            //Act
+            Repo.AddNewUser(test_1);
+            Repo.AddNewUser(test_2);
+            int expected_count = 2;
+            int actual_count = Repo.GetAllUsers().Count();
+            //Assert
+            Assert.AreEqual(expected_count, actual_count);
+
+
+        }
 
         [TestMethod]
         public void EnsureCanAddNewDevice()
@@ -429,12 +445,13 @@ namespace Bio.io.Tests.DAL
 
 
         [TestMethod]
-        public void EnsureCanGetUserByID() //Do I need to generate an Add User method so I can test this?
+        public void EnsureCanGetUserByID() 
         {
             //Arrange
+            ConnectMocksToDatastore();
             //Act
             int expected_userID = 1;
-            User found_user = Repo.GetUserByID(1);
+            User found_user = Repo.GetUserByID("1");
             int actual_userID = found_user.UserID;
             //Assert
             Assert.IsNotNull(found_user);

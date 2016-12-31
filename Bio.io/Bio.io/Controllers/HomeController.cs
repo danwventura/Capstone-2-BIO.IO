@@ -8,7 +8,7 @@ namespace Bio.io.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Active()
+        public ActionResult Login()
         {
             ViewBag.Message = "Your active devices page.";
 
