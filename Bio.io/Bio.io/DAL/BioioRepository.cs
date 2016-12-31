@@ -64,7 +64,6 @@ namespace Bio.io.DAL
 
         }
 
-
         public void AddDataPoint(DataPoint datapoint)
         {
             Context.DataPoints.Add(datapoint);

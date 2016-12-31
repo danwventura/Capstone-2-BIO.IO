@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Bio.io.DAL;
+using Bio.io.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,9 +17,10 @@ namespace Bio.io.Controllers
         }
 
         // GET: Active/Details/5
-        public ActionResult Details(int id)
+        public void AddDatapoint(DataPoint datapoint)
         {
-            return View();
+            BioioRepository repo = new BioioRepository();
+            repo.AddDataPoint(datapoint);
         }
 
         // GET: Active/Create
