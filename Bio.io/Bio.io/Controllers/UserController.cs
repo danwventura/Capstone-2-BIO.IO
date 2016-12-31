@@ -1,5 +1,6 @@
 ﻿using Bio.io.DAL;
 using Bio.io.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,26 +19,28 @@ namespace Bio.io.Controllers
         }
 
         // GET: User/Details/5
-        public User GetCurrentUser()
+        public string GetCurrentUser()
         {
             //BioioRepository Repo = new BioioRepository();
             //return Repo.GetUserByID(UserID);
-            
-            //var claimsIdentity = User.Identity as ClaimsIdentity;
-            //if (claimsIdentity != null) {
 
-            //    var userIdClaim = claimsIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
- 
-            //    if (userIdClaim != null)
-            //    {
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+
+                var userIdClaim = claimsIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
                     BioioRepository repo = new BioioRepository();
-                    string userUserName = User.Identity.Name;
-                    //string userIdValue = userIdClaim.Value;
-                    User this_user = repo.GetUserFromUserName(userUserName);
-                    return this_user;
-           //     }
-           //}
-           //     return null;
+                    //string userUserName = User.Identity.Name;
+                    string userIdValue = userIdClaim.Value;
+                    User this_user = repo.GetUserById(userIdValue);
+                    var my_user = JsonConvert.SerializeObject(this_user);
+                    return my_user;
+                }
+            }
+            return null;
         }
 
         //public User GetUserByID(int userID)
@@ -48,7 +51,7 @@ namespace Bio.io.Controllers
         //    User found_user = Repo.GetUserByID(userID);
         //    return found_user;
 
-            
+
         //}
 
         // GET: User/Edit/5

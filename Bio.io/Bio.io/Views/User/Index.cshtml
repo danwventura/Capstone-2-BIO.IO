@@ -7,9 +7,10 @@
 
 
 
-    <button ng-click="getThisUser()">Get User</button>
 
     <div>
-        <p>{{user}}</p>
+        <label>Name: </label><p>{{user.BaseUser.Name}}</p>
+        <label>Username: </label><p>{{user.BaseUser.UserName}}</p>
+        <label>Member Since: </label><p>{{user.createdMonth}}/{{user.createdDay}}/{{user.createdYear}}</p>
     </div>
 </div>

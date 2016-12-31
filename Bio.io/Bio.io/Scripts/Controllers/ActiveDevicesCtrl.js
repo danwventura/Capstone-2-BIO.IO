@@ -137,11 +137,27 @@
         console.log("googLats", $scope.googleLats);
         console.log("googLongs", $scope.googleLongs);
         
-        var datapointsArray = [];
-        var datapoint = {}
+        var datapoint_array = [];
+        var datapoint = {};
 
         var lats = $scope.googleLats;
         var longs = $scope.googleLongs;
+
+        for (var i = 0; i < responseFeed.length; i++) {
+
+            datapoint_array[i] = new datapoint ({
+                channelId: $scope.currChannelId,
+                created: responseFeed[i].created_at,
+                lat: lats[i],
+                long: long[i],
+
+            })
+
+
+        }
+
+
+
 
         //for (var i = 0; i < lats.length; i++) {
             
@@ -159,17 +175,8 @@
         //var datapoint_array = [];
         //var datapoint;
 
-        //for (var i = 0; i < responseFeed.length; i++) {
-
-        //    datapoint_array[i] = new datapoint{
-        //        channelId: $scope.currChannelId,
-        //        created: responseFeed[i].created_at,
-        //        coords:
-        //    }
-
-
-        }
-    //}
+        
+    }
     
 
 
