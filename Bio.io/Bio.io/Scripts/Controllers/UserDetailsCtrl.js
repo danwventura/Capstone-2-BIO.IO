@@ -2,30 +2,43 @@
 
     $scope.message = "ACCOUNT DETAILS HERE"
 
-    
-
+    $scope.user;
    
 
-    $scope.getThisUsersId = function(){
-
+    $scope.getThisUser = function () {
+        console.log("getThisUser");
         $http({
                method: 'GET',
-               url: "GetCurrentUserId"
+               url: 'http://localhost:51089/User/GetCurrentUser'
              }).then(function (response) {
             
                  console.log("response", response.data);
-                 var this_users_id = response.data;
-                 $scope.createScopedUserData(this_users_id);
+                 
+                 $scope.user = response.data;
+                 //$scope.createScopedUserData(this_user);
                 })
     }
 
-    $scope.createScopedUserData = function (this_users_id) {
+    //$scope.createScopedUserData = function (this_users_id) {
 
+    //    console.log("ID", this_users_id);
 
+    //    $http({
+    //        method: 'GET',
+    //        url: "GetUserByID",
+            
+    //    }).then(function (response) {
+    //        console.log(response);
+    //    })
+
+        //$http.get("GetUserByID", { params: { this_users_id } })
+        //    .then(function (response) {
+        //        console.log(response);
+        //     });
         
         
 
-    }
+    //}
 
     //$scope.getCurrUser = function () {
     //    $scope.currUser;

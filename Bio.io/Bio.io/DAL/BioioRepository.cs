@@ -27,7 +27,8 @@ namespace Bio.io.DAL
         
         public List<User> GetAllUsers()
         {
-           return Context.BioioUsers.ToList();
+            
+            return Context.BioioUsers.ToList();
         }
 
         public List<Device> GetAllDevices()
@@ -53,6 +54,16 @@ namespace Bio.io.DAL
         //////////////////////////////////////
         ////////ADD NEW INSTANCE OF TYPE/////
         /////////////////////////////////////
+
+        public void AddNewUser(string user_id)
+        {
+            ApplicationUser found_app_user = Context.Users.FirstOrDefault(u => u.Id == user_id);
+            var new_user = new User { BaseUser = found_app_user };
+            Context.BioioUsers.Add(new_user);
+            Context.SaveChanges();
+
+        }
+
 
         public void AddDataPoint(DataPoint datapoint)
         {
@@ -115,16 +126,23 @@ namespace Bio.io.DAL
         //////GET INSTANCE OF TYPE BY ID/////
         /////////////////////////////////////
 
-        public User GetUserByID(int userID)
+        public User GetUserByID(string user_id)
         {
-
-            User found_user = Context.BioioUsers.FirstOrDefault(u => u.UserID == userID);
+            //int i = 0;
+            ApplicationUser found_app_user = Context.Users.FirstOrDefault(u => u.Id == user_id);
+            User found_user = GetUserFromUserName(found_app_user.UserName);
             return found_user;
         }
 
+        public User GetUserFromUserName(string user_name)
+        {
+            User foundUser = Context.BioioUsers.FirstOrDefault(u => u.BaseUser.UserName == user_name);
+            return foundUser;   //Broken here
+        } 
+
         public Device GetDeviceByID(int deviceID)
         {
-            Device found_device = Context.Devices.FirstOrDefault(d => d.DeviceID == deviceID); //getting null here
+            Device found_device = Context.Devices.FirstOrDefault(d => d.DeviceID == deviceID); 
             return found_device;
         }
 
