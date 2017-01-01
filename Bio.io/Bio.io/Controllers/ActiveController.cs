@@ -18,11 +18,11 @@ namespace Bio.io.Controllers
         }
 
         // GET: Active/Details/5
-        public void AddDatapoint(string datapoint)
+        public void AddDatapoint(DataPoint datapoint)
         {
-            DataPoint new_datapoint = (new JavaScriptSerializer()).Deserialize<DataPoint>(datapoint);
+            //DataPoint new_datapoint = (new JavaScriptSerializer()).Deserialize<DataPoint>(datapoint);
             BioioRepository repo = new BioioRepository();
-            repo.AddDataPoint(new_datapoint);
+            repo.AddDataPoint(datapoint);
         }
 
         // GET: Active/Create

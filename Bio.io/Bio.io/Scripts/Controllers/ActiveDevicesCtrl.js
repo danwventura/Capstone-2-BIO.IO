@@ -1,4 +1,4 @@
-﻿app.controller("ActiveDevicesCtrl", function ($scope, $http) {
+﻿app.controller("ActiveDevicesCtrl", function ($scope, $http, $location) {
 
     $scope.message = "Please Enter The ThingSpeak Channel ID Here";
 
@@ -12,6 +12,7 @@
     $scope.googleLongs = [];
     $scope.datapoint_array = [];
 
+    $scope.postResponse = "Hello";
 
     $scope.stopLog = function() {
         
@@ -156,7 +157,6 @@
         for (var i = 0; i < responseFeed.length; i++) {
             datapoint_array[i] = JSON.stringify(new datapoint(currChannelId, responseFeed[i].created_at, lats[i], longs[i]));
         }
-        console.log(datapoint_array);
         $scope.addNewDatapoints(datapoint_array);
     }
     
@@ -165,10 +165,18 @@
 
     $scope.addNewDatapoints = function (datapoint_array) {
 
+
         for (var i = 0; i < datapoint_array.length; i++) {
-            $http.post({ url: "http://localhost:51089/Active/AddDatapoint", data: datapoint_array[i] })
+            console.log(datapoint_array[i]);
+
+            $http({
+                method:'POST',
+                url: 'http://localhost:51089/Active/AddDatapoint',
+                data: datapoint_array[i]
+            })
         }
 
+        $location.path("http://localhost:51089/Routes/All");
     }
 
 
