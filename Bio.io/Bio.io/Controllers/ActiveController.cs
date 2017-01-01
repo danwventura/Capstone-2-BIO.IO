@@ -26,9 +26,22 @@ namespace Bio.io.Controllers
         }
 
         // GET: Active/Create
-        public ActionResult Create()
+        public void CreateNewRoute(List<string> datapoints)
         {
-            return View();
+            //List<DataPoint> datapoints = new List<DataPoint>();
+
+            List<DataPoint> cleaned_datapoints = new List<DataPoint>();
+            Route route = new Route();
+            for (int k = 0; k < datapoints.Count; k++)
+            {
+                cleaned_datapoints.Add((new JavaScriptSerializer()).Deserialize<DataPoint>(datapoints[k]));
+            }
+            route.Coordinates = cleaned_datapoints;
+            route.Created = DateTime.Now;
+            BioioRepository repo = new BioioRepository();
+            Route test_route = route;
+            repo.AddNewRoute(route);
+            int i = 0;
         }
 
         // POST: Active/Create

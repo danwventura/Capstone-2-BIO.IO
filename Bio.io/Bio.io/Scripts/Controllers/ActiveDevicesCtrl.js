@@ -169,19 +169,42 @@
         for (var i = 0; i < datapoint_array.length; i++) {
             console.log(datapoint_array[i]);
 
-            $http({
-                method:'POST',
-                url: 'http://localhost:51089/Active/AddDatapoint',
-                data: datapoint_array[i]
-            })
+            //$http({
+            //    method:'POST',
+            //    url: 'http://localhost:51089/Active/AddDatapoint',
+            //    data: datapoint_array[i]
+            //})
         }
-
-        $location.path("http://localhost:51089/Routes/All");
+        $scope.createNewRoute(datapoint_array);
+        //$location.path("http://localhost:51089/Routes/All");
     }
 
 
 
+    $scope.createNewRoute = function (datapoint_array) {
 
+        var datapointArrayLength = datapoint_array.length;
+
+        for (var i = 0; i < datapoint_array.length; i++) {
+            console.log(datapoint_array[i]);
+
+            $http({
+                method:'POST',
+                url: 'http://localhost:51089/Active/CreateNewRoute',
+                data: datapoint_array
+            })
+        }
+
+
+
+
+        //$http({
+        //    method: 'POST',
+        //    url: 'http://localhost:51089/Active/CreateNewRoute',
+        //    data: datapoint_array
+        //})
+
+    }
 
 
 })
