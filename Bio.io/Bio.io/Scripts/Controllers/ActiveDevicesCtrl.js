@@ -157,27 +157,27 @@
         for (var i = 0; i < responseFeed.length; i++) {
             datapoint_array[i] = JSON.stringify(new datapoint(currChannelId, responseFeed[i].created_at, lats[i], longs[i]));
         }
-        $scope.addNewDatapoints(datapoint_array);
+        $scope.createNewRoute(datapoint_array);
     }
     
 
 
 
-    $scope.addNewDatapoints = function (datapoint_array) {
+    //$scope.addNewDatapoints = function (datapoint_array) {
 
 
-        for (var i = 0; i < datapoint_array.length; i++) {
-            console.log(datapoint_array[i]);
+    //    for (var i = 0; i < datapoint_array.length; i++) {
+    //        console.log(datapoint_array[i]);
 
-            //$http({
-            //    method:'POST',
-            //    url: 'http://localhost:51089/Active/AddDatapoint',
-            //    data: datapoint_array[i]
-            //})
-        }
-        $scope.createNewRoute(datapoint_array);
-        //$location.path("http://localhost:51089/Routes/All");
-    }
+    //        //$http({
+    //        //    method:'POST',
+    //        //    url: 'http://localhost:51089/Active/AddDatapoint',
+    //        //    data: datapoint_array[i]
+    //        //})
+    //    }
+    //    $scope.createNewRoute(datapoint_array);
+    //    //$location.path("http://localhost:51089/Routes/All");
+    //}
 
 
 
