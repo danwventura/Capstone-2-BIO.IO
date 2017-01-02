@@ -12,7 +12,6 @@
     $scope.googleLongs = [];
     $scope.datapoint_array = [];
 
-    $scope.postResponse = "Hello";
 
     $scope.stopLog = function() {
         
@@ -44,7 +43,6 @@
 
 
     $scope.createMap = function () {
-        console.log("createMap");
         $scope.mapOptions = {
             zoom: 19,
             center: new google.maps.LatLng(36.172057, -86.746411), //Can I make a constant here?
