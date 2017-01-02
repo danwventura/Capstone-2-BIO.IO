@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Bio.io.DAL;
+using Bio.io.Models;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,9 +24,15 @@ namespace Bio.io.Controllers
         }
 
         // GET: AllRoutes/Create
-        public ActionResult Create()
+        public String GetUserRoutes()
         {
-            return View();
+            List<string> all_routes_as_strings = new List<string>();
+            BioioRepository repo = new BioioRepository();
+            List<Route> users_routes = repo.GetAllRoutes();
+            
+            string output = JsonConvert.SerializeObject(users_routes);
+
+            return output;
         }
 
         // POST: AllRoutes/Create

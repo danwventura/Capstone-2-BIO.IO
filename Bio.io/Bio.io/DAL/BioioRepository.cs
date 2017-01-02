@@ -64,7 +64,6 @@ namespace Bio.io.DAL
 
         }
 
-
         public void AddDataPoint(DataPoint datapoint)
         {
             Context.DataPoints.Add(datapoint);
@@ -126,7 +125,7 @@ namespace Bio.io.DAL
         //////GET INSTANCE OF TYPE BY ID/////
         /////////////////////////////////////
 
-        public User GetUserByID(string user_id)
+        public User GetUserById(string user_id)
         {
             //int i = 0;
             ApplicationUser found_app_user = Context.Users.FirstOrDefault(u => u.Id == user_id);
