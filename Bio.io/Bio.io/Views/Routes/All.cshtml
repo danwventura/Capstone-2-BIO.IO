@@ -5,20 +5,37 @@
 <h3>@ViewBag.Message</h3>
 
 
-<style>
+@*<style>
     #map {
         height: 400px;
         width: 100%;
     }
-</style>
+</style>*@
+
+@*<style>
+    #map_container {
+        height: 200px;
+        width: 100%;
+    }
+
+
+</style>*@
 
 <div ng-controller="AllRoutesCtrl">
+    @*<div ng-repeat="op in mapOptions">*@
+        <div id="map">
 
-    
-    <div id="map"></div>
-    <button ng-click="makeCoordinateArrays()">Show Markers</button>
-    <div ng-repeat="location in coordinates" style="margin-top:50px">
-        <h3>Coordinate</h3>
-        <p>{{location}}</p>
-    </div>
+
+
+        </div>
+
+        @*<script>
+            function initMap() {
+                var mapDiv = document.getElementById('map');
+                var map = new google.maps.Map(mapDiv, `{{op}}`);
+            }
+        </script>
+    </div>*@
 </div>
+
+
