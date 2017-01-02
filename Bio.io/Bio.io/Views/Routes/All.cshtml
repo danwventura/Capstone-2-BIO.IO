@@ -1,11 +1,4 @@
-﻿
-
-
-
-@*Why does this view have full HTML structure while the other doesnt?*@
-@*How do I integrate this with _layout??*@
-
-@{
+﻿@{
     ViewBag.Title = "All Routes Page";
 }
 <h2>@ViewBag.Title</h2>
@@ -21,9 +14,7 @@
 
 <div ng-controller="AllRoutesCtrl">
 
-    <div>
-        <h1><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Taking out the Trash</h1>
-    </div>
+    
     <div id="map"></div>
     <button ng-click="makeCoordinateArrays()">Show Markers</button>
     <div ng-repeat="location in coordinates" style="margin-top:50px">
