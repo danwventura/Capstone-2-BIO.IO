@@ -58,11 +58,9 @@
 
 
     $scope.createCoordsArray = function (responseFeed) {
-        console.log("createCoordsArray");
         for (var i = 0; i < responseFeed.length; i++) {
             $scope.responseCoords.push(responseFeed[i].field1);
         }
-        console.log("responseCoords",$scope.responseCoords);
         $scope.makeCleanCoordinateArrays();
     }
 
@@ -70,12 +68,10 @@
 
 
     $scope.makeCleanCoordinateArrays = function () {
-        console.log("makeCleanCoords");
         var string_coords = $scope.responseCoords;
         for (var i = 0; i < string_coords.length; i++) {
             $scope.coordinate_arrays[i] = string_coords[i].split(",");
         }
-        console.log("scopecoordsarrays",$scope.coordinate_arrays);
         $scope.parseCoordinateArrays();
     }
 
@@ -83,7 +79,6 @@
 
 
     $scope.parseCoordinateArrays = function () {
-        console.log("parseCoords");
         var coordinate_arrays = $scope.coordinate_arrays;
         for (var i = 0; i < coordinate_arrays.length; i++) {
             $scope.googleLats[i] = parseFloat(coordinate_arrays[i][0]);
@@ -97,7 +92,6 @@
 
 
     $scope.makeMarkers = function () {
-        console.log("makeMarkers");
         var lats = $scope.googleLats;
         var longs = $scope.googleLongs;
         console.log("lats", lats)
@@ -117,7 +111,6 @@
 
 
     $scope.makePath = function (markers) {
-        console.log("makePath");
         var pathCoords = [];
 
         for (var i = 0; i < markers.length; i++) {
@@ -145,9 +138,7 @@
 
 
     $scope.createDatapointArray = function (responseFeed) {
-        console.log("googLats", $scope.googleLats);
-        console.log("googLongs", $scope.googleLongs);
-        
+                
         var datapoint = $scope.datapoint;
         var datapoint_array = $scope.datapoint_array;
         var currChannelId = $scope.currChannelId
@@ -159,51 +150,15 @@
         }
         $scope.createNewRoute(datapoint_array);
     }
-    
-
-
-
-    //$scope.addNewDatapoints = function (datapoint_array) {
-
-
-    //    for (var i = 0; i < datapoint_array.length; i++) {
-    //        console.log(datapoint_array[i]);
-
-    //        //$http({
-    //        //    method:'POST',
-    //        //    url: 'http://localhost:51089/Active/AddDatapoint',
-    //        //    data: datapoint_array[i]
-    //        //})
-    //    }
-    //    $scope.createNewRoute(datapoint_array);
-    //    //$location.path("http://localhost:51089/Routes/All");
-    //}
-
 
 
     $scope.createNewRoute = function (datapoint_array) {
-
-        var datapointArrayLength = datapoint_array.length;
-
-        for (var i = 0; i < datapoint_array.length; i++) {
-            console.log(datapoint_array[i]);
 
             $http({
                 method:'POST',
                 url: 'http://localhost:51089/Active/CreateNewRoute',
                 data: datapoint_array
             })
-        }
-
-
-
-
-        //$http({
-        //    method: 'POST',
-        //    url: 'http://localhost:51089/Active/CreateNewRoute',
-        //    data: datapoint_array
-        //})
-
     }
 
 
