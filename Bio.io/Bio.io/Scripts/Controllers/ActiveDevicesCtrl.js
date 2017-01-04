@@ -20,9 +20,11 @@
     }
 
     $scope.startLog = function () {
-        continueLog = true;
+        continueLog = true; //Might need to move this out and have if statement
         console.log("startLog");
         //while(continueLog = true){
+
+        //look for $timeout in angular docs
         //setTimeout(function () {
         $http({
             method: 'GET',
@@ -32,6 +34,9 @@
             $scope.createMap();
             $scope.createCoordsArray(response.data.feeds);
             $scope.createDatapointArray(response.data.feeds);
+            //$scope.startlog  (call start log again to limit calls)
+            //wait for response or else will have multiple calls waiting for responses --> crash
+            //might need two different functions (one for start/one for continue)
         })
                 
         //}, 20000)
