@@ -252,6 +252,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\Bio_io Logo.png" />
+    <Content Include="img\bio_io_account.png" />
+    <Content Include="img\bio_io_active_devices.png" />
+    <Content Include="img\bio_io_devices.png" />
+    <Content Include="img\bio_io_gps_data.png" />
+    <Content Include="img\bio_io_instructions.png" />
+    <Content Include="img\bio_io_routes.png" />
     <Content Include="Scripts\Controllers\AccountCtrl.js" />
     <Content Include="Scripts\Controllers\ActiveDevicesCtrl.js" />
     <Content Include="Scripts\Controllers\AllRoutesCtrl.js" />
