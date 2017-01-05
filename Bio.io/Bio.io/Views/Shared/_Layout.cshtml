@@ -9,7 +9,28 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhLrVnYrxfeB7tLi52UZRviVbyIJWYISo"></script>
 </head>
 <body ng-app="Bioio">
-    <div class="navbar navbar-inverse navbar-fixed-top">
+
+
+    @*<ul id="slide-out" class="side-nav fixed">
+        <li><a href="#!">First Sidebar Link</a></li>
+        <li><a href="#!">Second Sidebar Link</a></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>*@
+
+
+    
+            <ul id="slide-out" class="side-nav fixed">
+                <li><img src="../../img/Bio_io Logo.png" class="logo" /><h4 id="logo_name">BIO.IO</h4></li>
+                <li><a><img src="../../img/bio_io_instructions.png" class="icon" /><label>Get Started</label></a></li>
+                <li><a><img src="../../img/bio_io_active_devices.png" class="icon"/><label>Active</label></a></li>
+                <li><a><img src="../../img/bio_io_routes.png" class="icon" /><label>Routes</label></a></li>
+                <li><a><img src="../../img/bio_io_account.png" class="icon" /><label>Account</label></a></li>
+                
+            </ul>
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+        
+
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,7 +49,7 @@
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </div>
+    </div>*@
     <div class="container body-content">
         @RenderBody()
         <hr />
