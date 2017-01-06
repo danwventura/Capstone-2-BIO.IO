@@ -2,36 +2,37 @@
     ViewBag.Title = "Active Devices";
 }
 
-<div ng-controller="ActiveDevicesCtrl">
-    <h3>{{message}}</h3>
-    
-    <input type="text" name="ChannelID" ng-model="currChannelId" />
-   
-    <div class="row">
-        <div class="col m4 offset-m2">
-            <button ng-click="startLog()">Start Log</button>
-            <button ng-click="stopLog()">Stop Log</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col m4 offset-m6">
-            <input type="text" ng-model="postResponse" />
-        </div>
-    </div>
-    <div id="map">
-
-        <h3>Map Here</h3>
-    </div>
-    
 
 
 
-    
-    @*@{
+
+    @{
         if (User.Identity.IsAuthenticated)
         {
-        
+
             <h1>HELLO, LOGGED IN USER</h1>
+            <div ng-controller="ActiveDevicesCtrl">
+                <h3>{{message}}</h3>
+
+                <input type="text" name="ChannelID" ng-model="currChannelId" />
+
+                <div class="row">
+                    <div class="col m4 offset-m2">
+                        <button ng-click="startLog()">Start Log</button>
+                        <button ng-click="stopLog()">Stop Log</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col m4 offset-m6">
+                        <input type="text" ng-model="postResponse" />
+                    </div>
+                </div>
+                <div id="map">
+                    <h3>Map Here</h3>
+                </div>
+
+            </div>
+
         }
 
         else
@@ -50,5 +51,4 @@
             </div>
         }
 
-    }*@
-</div>
+    }

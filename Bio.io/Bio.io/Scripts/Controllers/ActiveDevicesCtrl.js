@@ -12,6 +12,21 @@
     $scope.googleLongs = [];
     $scope.datapoint_array = [];
 
+    //$scope.getThisUser = function () {
+        console.log("getThisUser");
+        $http({
+            method: 'GET',
+            url: 'http://localhost:51089/User/GetCurrentUser'
+        }).then(function (response) {
+
+            $scope.user = response.data;
+            
+        })
+    //}
+
+        if ($scope.user = null) {
+            $('#slide-out').addClass("hidden");
+        }
 
     $scope.stopLog = function() {
         

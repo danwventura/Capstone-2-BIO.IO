@@ -1,8 +1,10 @@
 ﻿using Bio.io.DAL;
 using Bio.io.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -17,13 +19,29 @@ namespace Bio.io.Controllers
             return View();
         }
 
-        ////GET: Active/Details/5
-        //public void AddDatapoint(DataPoint datapoint)
-        //{
-        //    DataPoint new_datapoint = (new JavaScriptSerializer()).Deserialize<DataPoint>(datapoint);
-        //    BioioRepository repo = new BioioRepository();
-        //    repo.AddDataPoint(datapoint);
-        //}
+        public string GetCurrentUser()
+        {
+    
+            var claimsIdentity = User.Identity as ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+
+                var userIdClaim = claimsIdentity.Claims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier);
+
+                if (userIdClaim != null)
+                {
+                    BioioRepository repo = new BioioRepository();
+                    //string userUserName = User.Identity.Name;
+                    string userIdValue = userIdClaim.Value;
+                    User this_user = repo.GetUserById(userIdValue);
+                    var my_user = JsonConvert.SerializeObject(this_user);
+                    return my_user;
+                }
+            }
+            return null;
+        }
+
+
 
         // GET: Active/Create
         public void CreateNewRoute(List<string> datapoints)
