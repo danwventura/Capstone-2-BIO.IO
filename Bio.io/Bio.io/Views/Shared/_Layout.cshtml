@@ -10,16 +10,27 @@
 </head>
 <body ng-app="Bioio">
     
-            <ul id="slide-out" class="side-nav fixed">
-                <li><img src="../../img/Bio_io Logo.png" class="logo" /><h4 id="logo_name">BIO.IO</h4></li>
-                <li><img src="../../img/bio_io_instructions.png" class="icon" /><label></label></a></li>
-                <li><img src="../../img/bio_io_active_devices.png" class="icon"/><label>@Html.ActionLink("Active", "Index", "Active", new {@style="display:inline" })</label></li>
-                <li><img src="../../img/bio_io_routes.png" class="icon" /><label>@Html.ActionLink("Routes", "All", "Routes", new {@style = "display:inline" })</label></li>
-                <li><img src="../../img/bio_io_account.png" class="icon" /><label>@Html.ActionLink("Account", "Index", "User", new {@style = "display:inline" })</label></li>
-                
-            </ul>
-            <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-           
+
+
+    @{ 
+        if (User.Identity.IsAuthenticated)
+        {
+
+
+            <div class="flex-container">
+                <ul id="slide-out" class="side-nav fixed">
+                    <li><img src="../../img/Bio_io Logo.png" class="logo" /><h4 id="logo_name">BIO.IO</h4></li>
+                    <li><img src="../../img/bio_io_instructions.png" class="icon" /><a href="../../docs/TestInstructions.txt" download="Acme Instructions" id="instructions"><label>README</label></a></li>
+                    <li><img src="../../img/bio_io_active_devices.png" class="icon" /><label>@Html.ActionLink("Active", "Index", "Active", new { @style = "display:inline" })</label></li>
+                    <li><img src="../../img/bio_io_routes.png" class="icon" /><label>@Html.ActionLink("Routes", "All", "Routes", new { @style = "display:inline" })</label></li>
+                    <li><img src="../../img/bio_io_account.png" class="icon" /><label>@Html.ActionLink("Account", "Index", "User", new { @style = "display:inline" })</label></li>
+
+                </ul>
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+            } 
+        }
+
     <div class="container body-content">
         @RenderBody()
         <hr />

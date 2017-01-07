@@ -30,7 +30,8 @@ namespace Bio.io
                       "~/Scripts/Controllers/AllRoutesCtrl.js",
                       "~/Scripts/Controllers/RouteDetailsCtrl.js",
                       "~/Scripts/Controllers/PicturesCtrl.js",
-                      "~/Scripts/Controllers/UserDetailsCtrl.js"));
+                      "~/Scripts/Controllers/UserDetailsCtrl.js",
+                      "~/Scripts/Controllers/AccountCtrl.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

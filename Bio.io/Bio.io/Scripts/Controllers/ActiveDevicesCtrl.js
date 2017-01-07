@@ -12,6 +12,8 @@
     $scope.googleLongs = [];
     $scope.datapoint_array = [];
 
+    var continueLog = false;
+
     //$scope.getThisUser = function () {
         console.log("getThisUser");
         $http({
@@ -44,21 +46,28 @@
     $scope.startLog = function () {
         continueLog = true; //Might need to move this out and have if statement
         console.log("startLog");
+        var channelId = $scope.currChannelId
+
         //while(continueLog = true){
 
         //look for $timeout in angular docs
         //setTimeout(function () {
         $http({
             method: 'GET',
-            url: "https://api.thingspeak.com/channels/"+ $scope.currChannelId +"/feed.json"
+            url: "https://api.thingspeak.com/channels/"+ channelId +"/feed.json"
         }).then(function (response) {
-            console.log(response);
-            $scope.createMap();
-            $scope.createCoordsArray(response.data.feeds);
-            $scope.createDatapointArray(response.data.feeds);
-            //$scope.startlog  (call start log again to limit calls)
-            //wait for response or else will have multiple calls waiting for responses --> crash
-            //might need two different functions (one for start/one for continue)
+            
+            if (response != null) {
+                console.log(response);
+                console.log($scope.currChannelId);
+                $scope.createMap();
+                $scope.createCoordsArray(response.data.feeds);
+                $scope.createDatapointArray(response.data.feeds);
+                //$scope.startlog  (call start log again to limit calls)
+                //wait for response or else will have multiple calls waiting for responses --> crash
+                //might need two different functions (one for start/one for continue)
+            }
+            $scope.startLog();
         })
                 
         //}, 20000)
