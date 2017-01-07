@@ -1,4 +1,4 @@
-﻿app.controller("ActiveDevicesCtrl", function ($scope, $http, $location) {
+﻿app.controller("ActiveDevicesCtrl", function ($scope, $http, $window) {
 
     $scope.message = "Please Enter The ThingSpeak Channel ID Here";
 
@@ -18,9 +18,16 @@
             method: 'GET',
             url: 'http://localhost:51089/User/GetCurrentUser'
         }).then(function (response) {
+            if (response.data == "") {
+                console.log("change path");
+                $window.location.assign('Account/Register');
+            }
 
-            $scope.user = response.data;
-            
+            else if (response.data != ""){
+
+                $scope.user = response.data;
+                console.log("USER USER", response.data);
+            }
         })
     //}
 
