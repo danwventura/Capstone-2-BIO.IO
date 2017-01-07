@@ -399,7 +399,7 @@ namespace Bio.io.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //
@@ -456,7 +456,7 @@ namespace Bio.io.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Active");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

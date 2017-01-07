@@ -4112,13 +4112,13 @@ nav .nav-wrapper {
 
 @media only screen and (min-width: 993px) {
   nav a.button-collapse {
-    display: none;
+    display: block;
   }
 }
 
 nav .button-collapse {
   float: left;
-  position: relative;
+  /*position: relative;*/
   z-index: 1;
   height: 56px;
 }
@@ -5523,7 +5523,7 @@ textarea.materialize-textarea {
   height: 3rem;
   width: 100%;
   font-size: 1rem;
-  margin: 0 0 15px 0;
+  margin: 0 0 15px 23%;
   padding: 0;
   box-shadow: none;
   box-sizing: content-box;

@@ -2,53 +2,27 @@
     ViewBag.Title = "Active Devices";
 }
 
-<div ng-controller="ActiveDevicesCtrl">
-    <h3>{{message}}</h3>
-    
-    <input type="text" name="ChannelID" ng-model="currChannelId" />
-   
-    <div class="row">
-        <div class="col m4 offset-m2">
-            <button ng-click="startLog()">Start Log</button>
-            <button ng-click="stopLog()">Stop Log</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col m4 offset-m6">
-            <input type="text" ng-model="postResponse" />
-        </div>
-    </div>
-    <div id="map">
 
-        <h3>Map Here</h3>
-    </div>
-    
 
 
 
     
-    @*@{
-        if (User.Identity.IsAuthenticated)
-        {
-        
             <h1>HELLO, LOGGED IN USER</h1>
-        }
+            <div ng-controller="ActiveDevicesCtrl">
+                <h3>{{message}}</h3>
 
-        else
-        {
+                <input type="text" name="ChannelID" ng-model="currChannelId" />
 
-            <div class="jumbotron">
                 <div class="row">
-                    <div>
-                        <p class="col s4"><a href="Account/Login" class="btn-btn-primary btn-large">LOGIN &raquo</a></p>
-                    
-                    </div>
-                    <div>
-                        <p class="col s4"><a href="Account/Register" class="btn-btn-primary btn-large">REGISTER &raquo</a></p>
+                    <div class="col m4 offset-m2">
+                        <button ng-click="startLog()">Start Log</button>
+                        <button ng-click="stopLog()">Stop Log</button>
                     </div>
                 </div>
-            </div>
-        }
+                <div id="map">
+                    <h3>Map Here</h3>
+                </div>
 
-    }*@
-</div>
+            </div>
+
+            
