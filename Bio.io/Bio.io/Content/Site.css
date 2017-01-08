@@ -50,6 +50,7 @@ color: steelblue;
 }
 
 #slide-out li a {
+display: inline;
 height: 75px;
 }
 
