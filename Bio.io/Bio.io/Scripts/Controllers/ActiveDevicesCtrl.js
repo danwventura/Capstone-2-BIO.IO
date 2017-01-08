@@ -70,7 +70,7 @@
             }
             else {
                 //var findNewestDatapoint = function (respFeed) {
-                    
+                console.log("second");
                     return responseFeed.reduce(function (currentItem, mostRecent) {
                         
                         var current = new Date(currentItem.created_at);
@@ -82,7 +82,7 @@
                         }
                     }, { createdDate: 'Jan 01, 1970' });
 
-                    
+                    console.log(mostRecent);
                     $scope.createDatapointArray(mostRecent);
                 //}
                 //findNewestDatapoint();
@@ -93,7 +93,7 @@
                 if (!!continueLog) {
                     $scope.startLog();
                 }
-            },5000)
+            },60000)
                 //console.log($scope.currChannelId);
                 
 
@@ -293,7 +293,7 @@
 
     //if else statement to call either createDataPointArray/createNewRoute or updateRoute
 
-    $scope.createDatapointArray = function (responseFeed) {
+    $scope.createDatapointArray = function (responseFeed, mostRecent) {
                 
         var datapoint = $scope.datapoint;
         var datapoint_array = $scope.datapoint_array;
