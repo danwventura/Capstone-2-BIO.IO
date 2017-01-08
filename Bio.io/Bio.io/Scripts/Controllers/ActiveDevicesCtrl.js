@@ -1,6 +1,6 @@
 ﻿app.controller("ActiveDevicesCtrl", function ($scope, $http, $window,$timeout) {
 
-    $scope.message = "Please Enter The ThingSpeak Channel ID Here";
+    $scope.message = "Enter Your ThingSpeak Channel ID Here";
 
     
     $scope.recentChannels = [];
