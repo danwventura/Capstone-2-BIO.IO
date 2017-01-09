@@ -40,7 +40,7 @@ textarea {
 /*SideNav*/
 #slide-out {
 align-items:center;
-min-width: 21%;
+width: !important 21%;
 
 }
 

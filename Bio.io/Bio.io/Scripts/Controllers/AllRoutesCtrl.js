@@ -94,7 +94,8 @@
                 var key2 = 'markers' + i;
                 $scope[key2][k] = new google.maps.Marker({
                     map: $scope[key],
-                    position: { lat: routes[i].Coordinates[k].Lat, lng: routes[i].Coordinates[k].Long }
+                    position: { lat: routes[i].Coordinates[k].Lat, lng: routes[i].Coordinates[k].Long },
+                    visible: false
                 })
             }
         }
