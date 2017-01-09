@@ -3837,7 +3837,7 @@ input[type=range] + .thumb {
     left: 41.6666666667%;
   }
   .row .col.offset-m6 {
-    margin-left: 50%;
+    margin-left: 15%;
   }
   .row .col.pull-m6 {
     right: 50%;
@@ -5523,7 +5523,7 @@ textarea.materialize-textarea {
   height: 3rem;
   width: 100%;
   font-size: 1rem;
-  margin: 0 0 15px 23%;
+  margin: 0 0 15px 9%;
   padding: 0;
   box-shadow: none;
   box-sizing: content-box;

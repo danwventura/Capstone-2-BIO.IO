@@ -1972,6 +1972,7 @@ textarea.input-lg {
 .form-horizontal .form-group {
   margin-right: -15px;
   margin-left: -15px;
+  text-align: center;
 }
 
 .form-horizontal .form-group:before,

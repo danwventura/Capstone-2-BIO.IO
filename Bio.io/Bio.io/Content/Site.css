@@ -5,6 +5,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin-left: 25%;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -39,7 +40,7 @@ textarea {
 /*SideNav*/
 #slide-out {
 align-items:center;
-min-width: 21%;
+width: !important 21%;
 
 }
 
@@ -49,6 +50,7 @@ color: steelblue;
 }
 
 #slide-out li a {
+display: inline;
 height: 75px;
 }
 
