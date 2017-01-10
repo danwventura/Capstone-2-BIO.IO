@@ -260,6 +260,7 @@
     <Content Include="img\bio_io_gps_data.png" />
     <Content Include="img\bio_io_instructions.png" />
     <Content Include="img\bio_io_routes.png" />
+    <Content Include="img\NSS.png" />
     <Content Include="Scripts\Controllers\AccountCtrl.js" />
     <Content Include="Scripts\Controllers\ActiveDevicesCtrl.js" />
     <Content Include="Scripts\Controllers\AllRoutesCtrl.js" />

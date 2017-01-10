@@ -5,12 +5,13 @@
 
             
     <div>
-       <div ng-controller="ActiveDevicesCtrl" class="col m4">
+       <div ng-controller="ActiveDevicesCtrl" class="col m4 offset-m4" style="text-align:center">
+           <h4>E3 DEMO DAY AT</h4><img src="../img/NSS.png" id="nss"/>
             <h3>Hello, {{user.BaseUser.Name}}</h3>
             <h5>{{message}}</h5>
             <input type="text" name="ChannelID" ng-model="currChannelId" />
              <div class="row">
-                <div class="col m4 offset-m2">
+                <div>
                     <button ng-click="startLog()">Start Log</button>
                     <button ng-click="stopLog()">Stop Log</button>
                 </div>

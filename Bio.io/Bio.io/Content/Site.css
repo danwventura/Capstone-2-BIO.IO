@@ -80,6 +80,11 @@ margin-left: 61px;
     display:inline-block
 }
 
+#nss {
+height:200px;
+}
+
+
 /*Base properties for Google Map*/
 #map {
     height: 400px;

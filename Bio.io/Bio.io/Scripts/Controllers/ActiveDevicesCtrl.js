@@ -103,7 +103,7 @@
     $scope.createMap = function () {
         $scope.mapOptions = {
             zoom: 19,
-            center: new google.maps.LatLng(36.172057, -86.746411), //Can I make a constant here?
+            center: new google.maps.LatLng(36.132655, -86.756476), //Can I make a constant here?
             mapTypeId: google.maps.MapTypeId.Roadmap
         };
         $scope.map = new google.maps.Map(document.getElementById('map'), $scope.mapOptions)
